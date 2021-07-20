@@ -1,6 +1,6 @@
 {
 	"name": "@low-key/vector-math",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "This is used for handling 2D Vectors and Vector Math",
 	"main": "dist/index.js",
 	"scripts": {
