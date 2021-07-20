@@ -1,4 +1,4 @@
-export namespace VectorMath {
+
 	export class Vector2 {
 		public readonly x: number;
 		public readonly y: number;
@@ -56,4 +56,3 @@ export namespace VectorMath {
 			return a.x * b.y + a.y * b.x;
 		}
 	}
-}
