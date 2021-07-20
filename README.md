@@ -1,18 +1,39 @@
-# What is Vector Math?
+## About
 
-This is used for handling 2D Vectors and Vector Math
+vector-math is an easy to use library for handling 2D Vectors and Vector math
 
-# Installation
+- Fast
+- Simple
+- Object-oriented
 
-`npm i --save vector-math`
+## Installation
 
-# Example
+```sh-session
+npm i --save @low-key/vector-math
+```
+
+### Example Usage
 
 ```js
-const { Vector2, MathV } = require("vector-math");
+import { Vector2, MathV } from "@low-key/vector-math";
 
-let pointA = new Vector2(3, 4);
-let pointA = new Vector2(6, 2);
-
-let pointC = MathV.add(pointA, pointB);
+class PhysicsBody {
+	public position: Vector2;
+	public velocity = Vector2.ZERO;
+	public force = Vector2.ZERO;
+	public gravity = new Vector2(0, 5);
+	public mass: number;
+	
+	protected constructor(x: number, y: number, m: number) {
+		this.position = new Vector2(x, y);
+		this.mass = m;
+	}
+	
+	public step(delta: number): void {
+		this.force = MathV.multiply(this.gravity, this.mass);
+		
+		this.velocity = MathV.add(this.velocity, MathV.divide(this.force, this.mass * delta));
+		this.position = MathV.add(this.position, MathV.multiply(this.velocity, delta));
+	}
+}
 ```

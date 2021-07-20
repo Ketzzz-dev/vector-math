@@ -1,0 +1,20 @@
+{
+	"name": "@low-key/vector-math",
+	"version": "1.0.1",
+	"description": "This is used for handling 2D Vectors and Vector Math",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Low-Key-750/vector-math.git"
+	},
+	"keywords": ["vector2", "vector", "math"],
+	"author": "low-key",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Low-Key-750/vector-math/issues"
+	},
+	"homepage": "https://github.com/Low-Key-750/vector-math#readme"
+}
