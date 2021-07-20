@@ -14,7 +14,7 @@ npm i --save @low-key/vector-math
 
 ### Example Usage
 
-```js
+```ts
 import { Vector2, MathV } from "@low-key/vector-math";
 
 class PhysicsBody {
