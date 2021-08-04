@@ -37,3 +37,7 @@ class PhysicsBody {
 	}
 }
 ```
+
+## 1.0.3 Changelog
+
+- Documented Vector2 and MathV methods and properties
