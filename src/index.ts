@@ -1,222 +1,260 @@
-
 /**
  * The 2-Dimensional Vector class for storing a point in space.
+ * 
+ * @class
  */
-export class Vector2 {
+class Vector2 {
 	/**
-	 * The X value of this Vector2.
+	 * The `x` value of this Vector2.
 	 * 
-	 * @type {number}
 	 * @public
 	 * @readonly
-	 */
-	public readonly x: number;
-	/**
-	 * The Y value of this Vector2.
-	 * 
+	 * @property
 	 * @type {number}
+	 */
+	public readonly x: number
+	/**
+	 * The `y` value of this Vector2.
+	 * 
 	 * @public
 	 * @readonly
+	 * @property
+	 * @type {number}
 	 */
-	public readonly y: number;
-
+	public readonly y: number
+	
 	/**
-	 * A constant Vector2 with 0 on both X and Y.
+	 * A constant Vector2 with both `x` and `y` values set to 0.
 	 * 
-	 * @type {Vector2}
 	 * @public
 	 * @static
 	 * @readonly
+	 * @type {Vector2}
 	 */
-	public static readonly ZERO = new Vector2(0, 0);
-
+	public static readonly ZERO = new Vector2(0, 0)
+	
 	/**
+	 * Instantiates a new Vector2 object.
+	 * 
+	 * @public
+	 * @constructor
 	 * @param {number} x
 	 * @param {number} y
-	 * @returns {Vector2}
 	 */
-	constructor(x: number, y: number) {
+	public constructor(x: number, y: number) {
 		/**
-		 * The X value of this Vector2.
+		 * The `x` value of this Vector2.
 		 * 
-		 * @type {number}
 		 * @public
 		 * @readonly
-		 */
-		this.x = x;
-		/**
-		 * The Y value of this Vector2.
-		 * 
 		 * @type {number}
+		 */
+		this.x = x
+		/**
+		 * The `y` value of this Vector2.
+		 * 
 		 * @public
 		 * @readonly
+		 * @type {number}
 		 */
-		this.y = y;
+		this.y = y
 	}
-
+	
 	/**
 	 * The negative value of this Vector2.
 	 * 
-	 * @type {Vector2}
 	 * @public
 	 * @readonly
+	 * @type {Vector2}
 	 */
 	public get negative(): Vector2 {
-		return new Vector2(-this.x, -this.y);
+		return new Vector2(-this.x, -this.y)
 	}
 	/**
 	 * The magnitude (length) of this Vector2.
 	 * 
-	 * @type {number}
 	 * @public
 	 * @readonly
+	 * @type {number}
 	 */
 	public get magnitude(): number {
-		return Math.sqrt(this.x * this.x + this.y * this.y);
+		return Math.sqrt(this.x * this.x + this.y * this.y)
 	}
 	/**
-	 * The normal of this Vector2.
+	 * The normalised form of this Vector2.
 	 * 
-	 * @type {Vector2}
 	 * @public
 	 * @readonly
+	 * @type {Vector2}
 	 */
 	public get normal(): Vector2 {
-		return MathV.divide(this, this.magnitude);
+		return Vector2.divide(this, this.magnitude)
 	}
-
+	
 	/**
-	 * Returns the string representation of a Vector2.
+	 * Returns the String representation of his Vector2.
 	 * 
 	 * @public
+	 * @method
 	 * @returns {string}
 	 */
 	public toString(): string {
-		return `x: ${this.x}, y: ${this.y}`;
+		return `x: ${this.x.toString()}, y: ${this.y.toString()}`
 	}
-}
-/**
- * The Math Vector class for handling 2-Dimensional Vector math.
- * 
- * @abstract
- */
-export abstract class MathV {
+	/**
+	 * Returns the Array representation of this Vector2.
+	 * 
+	 * @public
+	 * @method
+	 * @returns {[number, number]}
+	 */
+	public toArray(): [number, number] {
+		return [this.x, this.y]
+	}
+	
 	/**
 	 * Returns the sum of 2 Vector2's.
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} a 
-	 * @param {Vector2} b
+	 * @method
+	 * @param {Vector2} a - the first addend
+	 * @param {Vector2} b - the second addend
 	 * @returns {Vector2}
 	 */
 	public static add(a: Vector2, b: Vector2): Vector2 {
-		return new Vector2(a.x + b.x, a.y + b.y);
+		return new Vector2(a.x + b.x, a.y + b.y)
 	}
 	/**
-	 * Returns the difference between 2 Vector2's.
+	 * Returns the difference of 2 Vector2's
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} a
-	 * @param {Vector2} b
+	 * @method
+	 * @param {Vector2} a - the minuend
+	 * @param {Vector2} b - the subtrahend
 	 * @returns {Vector2}
 	 */
 	public static subtract(a: Vector2, b: Vector2): Vector2 {
-		return new Vector2(a.x - b.x, a.y - b.y);
+		return new Vector2(a.x - b.x, a.y - b.y)
 	}
 	/**
 	 * Returns the product of a Vector2 multiplied by a Scalar.
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} vector
-	 * @param {number} scalar
-	 * @returns {Vector2}
+	 * @method
+	 * @param {Vector2} v - the multiplicand
+	 * @param {number} s - the multiplier
+	 * @returs {Vector2}
 	 */
-	public static multiply(vector: Vector2, scalar: number): Vector2 {
-		return new Vector2(vector.x * scalar, vector.y * scalar);
+	public static multiply(v: Vector2, s: number): Vector2 {
+		return new Vector2(v.x * s, v.y * s)
 	}
 	/**
 	 * Returns the quotient of a Vector2 divided by a Scalar.
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} vector
-	 * @param {number} scalar
+	 * @method
+	 * @param {Vector2} v - the divisor
+	 * @param {number} s - the diviidend
 	 * @returns {Vector2}
 	 */
-	public static divide(vector: Vector2, scalar: number): Vector2 {
-		return new Vector2(vector.x / scalar, vector.y / scalar);
+	public static divide(v: Vector2, s: number): Vector2 {
+		return new Vector2(v.x / s, v.y / s)
 	}
 	/**
-	 * Compares 2 Vector2's and returns true if both share equal X and Y values.
+	 * Returns the remainder of a Vector2 divided by a Scalar.
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} a
-	 * @param {Vector2} b
+	 * @method
+	 * @param {Vector2} v - the divisor
+	 * @param {number} s - the diviidend
+	 * @returns {Vector2}
+	 */
+	public static mod(v: Vector2, s: number): Vector2 {
+		return new Vector2(v.x % s, v.y % s)
+	}
+	/**
+	 * Returns a Boolean that indicates wheter `a` and `b` both have equal `x` and `y` values.
+	 * 
+	 * @public
+	 * @static
+	 * @method
+	 * @param {Vector2} a - the first operand
+	 * @param {Vector2} b - the second operand
 	 * @returns {boolean}
 	 */
 	public static equals(a: Vector2, b: Vector2): boolean {
-		return a.x === b.x && a.y === b.y;
+		return a.x === b.x && a.y === b.y
 	}
-	
 	/**
-	 * Checks if either X or Y values of a Vector2 is not a number.
+	 * Returns a Boolean that indicates whether `v`'s `x` or `y` values is not a number.
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} Vector
+	 * @method
+	 * @param {Vector2} v - the Vector2 to be tested
 	 * @returns {boolean}
 	 */
-	public static isNaN(vector: Vector2): boolean {
-		return isNaN(vector.x) || isNaN(vector.y)
+	public static isNaN(v: Vector2): boolean {
+		return isNaN(v.x) || isNaN(v.y)
 	}
 	/**
-	 * Checks if both X and Y values of a Vector2 is finite.
+	 * Returns a Boolean that indicates whether `v`'s `x` and `y` values are finite.
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} vrctor
+	 * @method
+	 * @param {Vector2} v - the Vector2 to be tested
 	 * @returns {boolean}
 	 */
-	public static isFinite(vector: Vector2): boolean {
-		return isFinite(vector.x) && isFinite(vector.y)
+	public static isFinite(v: Vector2): boolean {
+		return isFinite(v.x) && isFinite(v.y)
 	}
 	/**
-	 * Returns the distance between 2 Vector2's.
+	 * Returns the distance between 2 Vector2's
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} a
-	 * @param {Vector2} b
+	 * @method
+	 * @param {Vector2} a - the starting point
+	 * @param {Vector2} b - the ending point
+	 * @returns {number}
 	 */
 	public static distance(a: Vector2, b: Vector2): number {
-		return MathV.subtract(a, b).magnitude;
+		return Vector2.subtract(a, b).magnitude
 	}
 	/**
-	 * Returns the dot product of 2 Vector2's.
+	 * Returns the dot product of 2 Vector2's
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} a
-	 * @param {Vector2} b
+	 * @method
+	 * @param {Vector2} a - the first Vector2
+	 * @param {Vector2} b - the second Vector2
 	 * @returns {number}
 	 */
 	public static dot(a: Vector2, b: Vector2): number {
-		return a.x * b.x + a.y * b.y;
+		return a.x * b.x + a.y * b.y
 	}
 	/**
-	 * Returns the cross product of 2 Vector2's.
+	 * Returns the cross product of 2 Vector2's
 	 * 
 	 * @public
 	 * @static
-	 * @param {Vector2} a
-	 * @param {Vector2} b
+	 * @method
+	 * @param {Vector2} a - the first Vector2
+	 * @param {Vector2} b - the second Vector2
 	 * @returns {number}
 	 */
 	public static cross(a: Vector2, b: Vector2): number {
-		return a.x * b.y + a.y * b.x;
+		return a.x * b.y + a.y * b.x
 	}
 }
+
+export { Vector2 }
+export default Vector2
+

@@ -38,6 +38,6 @@ class PhysicsBody {
 }
 ```
 
-## 1.0.3 Changelog
+## 1.0.4 Changelog
 
-- Documented Vector2 and MathV methods and properties
+- Reduced MathV and Vector2 class into one single class

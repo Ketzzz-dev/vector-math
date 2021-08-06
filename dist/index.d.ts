@@ -1,171 +1,204 @@
 /**
  * The 2-Dimensional Vector class for storing a point in space.
+ *
+ * @class
  */
-export declare class Vector2 {
+declare class Vector2 {
     /**
-     * The X value of this Vector2.
+     * The `x` value of this Vector2.
      *
-     * @type {number}
      * @public
      * @readonly
+     * @property
+     * @type {number}
      */
     readonly x: number;
     /**
-     * The Y value of this Vector2.
+     * The `y` value of this Vector2.
      *
-     * @type {number}
      * @public
      * @readonly
+     * @property
+     * @type {number}
      */
     readonly y: number;
     /**
-     * A constant Vector2 with 0 on both X and Y.
+     * A constant Vector2 with both `x` and `y` values set to 0.
      *
-     * @type {Vector2}
      * @public
      * @static
      * @readonly
+     * @type {Vector2}
      */
     static readonly ZERO: Vector2;
     /**
+     * Instantiates a new Vector2 object.
+     *
+     * @public
+     * @constructor
      * @param {number} x
      * @param {number} y
-     * @returns {Vector2}
      */
     constructor(x: number, y: number);
     /**
      * The negative value of this Vector2.
      *
-     * @type {Vector2}
      * @public
      * @readonly
+     * @type {Vector2}
      */
     get negative(): Vector2;
     /**
      * The magnitude (length) of this Vector2.
      *
-     * @type {number}
      * @public
      * @readonly
+     * @type {number}
      */
     get magnitude(): number;
     /**
-     * The normal of this Vector2.
+     * The normalised form of this Vector2.
      *
-     * @type {Vector2}
      * @public
      * @readonly
+     * @type {Vector2}
      */
     get normal(): Vector2;
     /**
-     * Returns the string representation of a Vector2.
+     * Returns the String representation of his Vector2.
      *
      * @public
+     * @method
      * @returns {string}
      */
     toString(): string;
-}
-/**
- * The Math Vector class for handling 2-Dimensional Vector math.
- *
- * @abstract
- */
-export declare abstract class MathV {
+    /**
+     * Returns the Array representation of this Vector2.
+     *
+     * @public
+     * @method
+     * @returns {[number, number]}
+     */
+    toArray(): [number, number];
     /**
      * Returns the sum of 2 Vector2's.
      *
      * @public
      * @static
-     * @param {Vector2} a
-     * @param {Vector2} b
+     * @method
+     * @param {Vector2} a - the first addend
+     * @param {Vector2} b - the second addend
      * @returns {Vector2}
      */
     static add(a: Vector2, b: Vector2): Vector2;
     /**
-     * Returns the difference between 2 Vector2's.
+     * Returns the difference of 2 Vector2's
      *
      * @public
      * @static
-     * @param {Vector2} a
-     * @param {Vector2} b
+     * @method
+     * @param {Vector2} a - the minuend
+     * @param {Vector2} b - the subtrahend
      * @returns {Vector2}
      */
     static subtract(a: Vector2, b: Vector2): Vector2;
     /**
-     * Returns the ??? of a Vector2 multiplied by a Scalar.
+     * Returns the product of a Vector2 multiplied by a Scalar.
      *
      * @public
      * @static
-     * @param {Vector2} vector
-     * @param {number} scalar
+     * @method
+     * @param {Vector2} v - the multiplicand
+     * @param {number} s - the multiplier
+     * @returs {Vector2}
+     */
+    static multiply(v: Vector2, s: number): Vector2;
+    /**
+     * Returns the quotient of a Vector2 divided by a Scalar.
+     *
+     * @public
+     * @static
+     * @method
+     * @param {Vector2} v - the divisor
+     * @param {number} s - the diviidend
      * @returns {Vector2}
      */
-    static multiply(vector: Vector2, scalar: number): Vector2;
+    static divide(v: Vector2, s: number): Vector2;
     /**
-     * Returns the dividend of a Vector2 divided by a Scalar.
+     * Returns the remainder of a Vector2 divided by a Scalar.
      *
      * @public
      * @static
-     * @param {Vector2} vector
-     * @param {number} scalar
+     * @method
+     * @param {Vector2} v - the divisor
+     * @param {number} s - the diviidend
      * @returns {Vector2}
      */
-    static divide(vector: Vector2, scalar: number): Vector2;
+    static mod(v: Vector2, s: number): Vector2;
     /**
-     * Compares 2 Vector2's and returns true if both share equal X and Y values.
+     * Returns a Boolean that indicates wheter `a` and `b` both have equal `x` and `y` values.
      *
      * @public
      * @static
-     * @param {Vector2} a
-     * @param {Vector2} b
+     * @method
+     * @param {Vector2} a - the first operand
+     * @param {Vector2} b - the second operand
      * @returns {boolean}
      */
     static equals(a: Vector2, b: Vector2): boolean;
     /**
-     * Checks if either X or Y values of a Vector2 is not a number.
+     * Returns a Boolean that indicates whether `v`'s `x` or `y` values is not a number.
      *
      * @public
      * @static
-     * @param {Vector2} Vector
+     * @method
+     * @param {Vector2} v - the Vector2 to be tested
      * @returns {boolean}
      */
-    static isNaN(vector: Vector2): boolean;
+    static isNaN(v: Vector2): boolean;
     /**
-     * Checks if both X and Y values of a Vector2 is finite.
+     * Returns a Boolean that indicates whether `v`'s `x` and `y` values are finite.
      *
      * @public
      * @static
-     * @param {Vector2} vrctor
+     * @method
+     * @param {Vector2} v - the Vector2 to be tested
      * @returns {boolean}
      */
-    static isFinite(vector: Vector2): boolean;
+    static isFinite(v: Vector2): boolean;
     /**
-     * Returns the distance between 2 Vector2's.
+     * Returns the distance between 2 Vector2's
      *
      * @public
      * @static
-     * @param {Vector2} a
-     * @param {Vector2} b
+     * @method
+     * @param {Vector2} a - the starting point
+     * @param {Vector2} b - the ending point
+     * @returns {number}
      */
     static distance(a: Vector2, b: Vector2): number;
     /**
-     * Returns the Dot product of 2 Vector2's.
+     * Returns the dot product of 2 Vector2's
      *
      * @public
      * @static
-     * @param {Vector2} a
-     * @param {Vector2} b
+     * @method
+     * @param {Vector2} a - the first Vector2
+     * @param {Vector2} b - the second Vector2
      * @returns {number}
      */
     static dot(a: Vector2, b: Vector2): number;
     /**
-     * Returns the cross product of 2 Vector2's.
+     * Returns the cross product of 2 Vector2's
      *
      * @public
      * @static
-     * @param {Vector2} a
-     * @param {Vector2} b
+     * @method
+     * @param {Vector2} a - the first Vector2
+     * @param {Vector2} b - the second Vector2
      * @returns {number}
      */
     static cross(a: Vector2, b: Vector2): number;
 }
+export { Vector2 };
+export default Vector2;
